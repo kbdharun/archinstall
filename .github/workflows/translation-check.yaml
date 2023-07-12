@@ -13,10 +13,12 @@ jobs:
         container:
             image: archlinux:latest
         steps:
-            - uses: actions/checkout@v3
-            - run: -|
+            - name: Setup Python
+              run: -|
                pacman --noconfirm -Syu python python-pip
                pip install --break-system-packages --upgrade pip
+            - uses: actions/checkout@v3
+            - name: Run script
                cd archinstall/locales
                bash locales_generator.sh
                git diff --name-only
