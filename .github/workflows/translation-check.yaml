@@ -19,6 +19,7 @@ jobs:
                pip install --break-system-packages --upgrade pip
             - uses: actions/checkout@v3
             - name: Run script
+              run: -|
                cd archinstall/locales
                bash locales_generator.sh
                git diff --name-only
